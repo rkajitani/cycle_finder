@@ -96,16 +96,16 @@ int Cycle::blastn2fa(){
       range_min = Region[0].start;
       range_max = Region[0].end;
       if(range_min == 1){
-	for(unsigned i = 0; i < Region.size(); ++i){
-	  if(Region[i].start > range_max){ //一部の領域を飛ばすようにアライメントされていればその配列はミスアセンブルとみなす
-	    break;
-	  } else if(Region[i].end > range_max){ //領域のmaxの更新
-	    range_max = Region[i].end;
-	  }
-	}
-	if(range_max >= Region[0].len*2){
-	  fprintf(fp3,">%s\n%s\n",(*it).c_str(),mp_fa[*it].c_str()); //%d:number, %s:文字列
-	}
+    for(unsigned i = 0; i < Region.size(); ++i){
+      if(Region[i].start > range_max){ //一部の領域を飛ばすようにアライメントされていればその配列はミスアセンブルとみなす
+        break;
+      } else if(Region[i].end > range_max){ //領域のmaxの更新
+        range_max = Region[i].end;
+      }
+    }
+    if(range_max >= Region[0].len*2){
+      fprintf(fp3,">%s\n%s\n",(*it).c_str(),mp_fa[*it].c_str()); //%d:number, %s:文字列
+    }
       }
     }
   }
@@ -115,28 +115,25 @@ int Cycle::blastn2fa(){
       Region = mp[*it];
       range_min = Region[0].start;
       range_max = Region[0].end;
-      //      if(range_min == 1){
-      if(range_min <= Region[0].len * 0.05){ //長さの0.05倍からのstartなら認める
-	for(unsigned i = 0; i < Region.size(); ++i){
-	  if(Region[i].start > range_max){ //一部の領域を飛ばすようにアライメントされていればその配列はミスアセンブルとみなす
-	    break;
-	  } else if(Region[i].end > range_max){ //領域のmaxの更新
-	    range_max = Region[i].end;
-	  }
-	}
-	if(range_max >= Region[0].len * 0.95){ //長さの0.95倍以上なら出力
-	  //		fprintf(fp3,"%s\t%d\t%d\n",(*it).c_str(),range_min,range_max); //%d:number, %s:文字列
-	  if(range_min != 0 || range_max < Region[0].len){ //完全長のアライメントがとれてなければ配列名の長さを変更
-	    seq_name_len = split_str(*it,"len");
-	    seq_name = seq_name_len[0] + to_string(static_cast<long long>(range_max - range_min + 1));
-	    seq_str = mp_fa[*it].substr(range_min, range_max - range_min + 1);
-	  } else {
-	    seq_name = *it;
-	    seq_str = mp_fa[*it];
-	  }
-	  //	  fprintf(fp3,">%s\n%s\n",(*it).c_str(),mp_fa[*it].c_str()); //%d:number, %s:文字列
-	  fprintf(fp3,">%s\n%s\n",seq_name.c_str(),seq_str.c_str()); //%d:number, %s:文字列
-	}
+      if(range_min <= ceil(Region[0].len * 0.05)){ //長さの0.05倍からのstartなら認める
+		for(unsigned i = 0; i < Region.size(); ++i){
+		  if(Region[i].start > range_max){ //一部の領域を飛ばすようにアライメントされていればその配列はミスアセンブルとみなす
+			break;
+		  } else if(Region[i].end > range_max){ //領域のmaxの更新
+			range_max = Region[i].end;
+		  }
+		}
+		if(range_max >= floor(Region[0].len * 0.95)){ //長さの0.95倍以上なら出力
+		  if(range_min != 0 || range_max < Region[0].len){ //完全長のアライメントがとれてなければ配列名の長さを変更
+			seq_name_len = split_str(*it,"len");
+			seq_name = seq_name_len[0] + to_string(static_cast<long long>(range_max - range_min + 1));
+			seq_str = mp_fa[*it].substr(range_min, range_max - range_min + 1);
+		  } else {
+			seq_name = *it;
+			seq_str = mp_fa[*it];
+		  }
+		  fprintf(fp3,">%s\n%s\n",seq_name.c_str(),seq_str.c_str()); //%d:number, %s:文字列
+		}
       }
     }
   }

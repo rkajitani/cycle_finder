@@ -186,6 +186,7 @@ inline void either_command(string command, bool file_exist, string file, string 
   if(file_exist){
     skip_message(command, &file);
   } else {
+    cerr << "CMD: " <<  cmd << endl;
     system(cmd.c_str());
   }
 }
@@ -277,20 +278,19 @@ void Extract::make_output_file(){ //name output file
   cat_multi_file();
 
   //jellyfish count command
-  string root_path = ROOT_PATH;
-  this->cmd_count = root_path + "/jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq;
-  this->cmd_count1 = root_path + "/jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file1 + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq1;
-  this->cmd_count2 = root_path + "/jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file2 + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq2;
+  this->cmd_count = "jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq;
+  this->cmd_count1 = "jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file1 + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq1;
+  this->cmd_count2 = "jellyfish count -C -m " + to_string(static_cast<long long>(this->k)) + " -o " + this->jf_file2 + " -t " + to_string(static_cast<long long>(this->t)) + " -s 100M " + this->read_fastq2;
 
   //jellyfish dump command
-  this->cmd_dump = root_path + "/jellyfish dump " + this->jf_file + " > " +this->dump_file;
-  this->cmd_dump1 = root_path + "/jellyfish dump " + this->jf_file1 + " > " +this->dump_file1;
-  this->cmd_dump2 = root_path + "/jellyfish dump " + this->jf_file2 + " > " +this->dump_file2;
+  this->cmd_dump = "jellyfish dump " + this->jf_file + " > " +this->dump_file;
+  this->cmd_dump1 = "jellyfish dump " + this->jf_file1 + " > " +this->dump_file1;
+  this->cmd_dump2 = "jellyfish dump " + this->jf_file2 + " > " +this->dump_file2;
 
   //jellyfish histo command
-  this->cmd_histo = root_path + "/jellyfish histo " + this->jf_file + " -l 1 -o " + histo_file;
-  this->cmd_histo1 = root_path + "/jellyfish histo " + this->jf_file1 + " -l 1 -o " + histo_file1;
-  this->cmd_histo2 = root_path + "/jellyfish histo " + this->jf_file2 + " -l 1 -o " + histo_file2;
+  this->cmd_histo = "jellyfish histo " + this->jf_file + " -l 1 -o " + histo_file;
+  this->cmd_histo1 = "jellyfish histo " + this->jf_file1 + " -l 1 -o " + histo_file1;
+  this->cmd_histo2 = "jellyfish histo " + this->jf_file2 + " -l 1 -o " + histo_file2;
 }
 
 void show_extract(){

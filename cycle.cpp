@@ -155,5 +155,5 @@ void Cycle::cycle_exe(){
   }catch(const char *error_message){
     cerr << error_message << endl;
   }
-  remove_cycle();
+//  remove_cycle();
 }

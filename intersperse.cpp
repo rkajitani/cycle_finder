@@ -32,7 +32,7 @@ Intersperse::Intersperse(){
   this->o = "out_I";
   this->intersperse_exist = false;
   this->read_coverage = 0.5;
-  this->length_min_thr = 100;
+  this->length_min_thr = 1;
 }
 
 void Intersperse::print_intersperse_usage(void){
@@ -214,8 +214,8 @@ void Intersperse::intersperse_exe(){
       throw "No intersperse repeats found";
     } else {
       trf_filter();
-      if(map_read() == -1){
-	throw "all interspersed repeats were filtered";
+      if(map_read_intersperse() == -1){
+		throw "all interspersed repeats were filtered";
       }
       repeat_num();
       intersperse_exist = true;
@@ -223,5 +223,5 @@ void Intersperse::intersperse_exe(){
   } catch(const char *error_message) {
     cerr << error_message << endl;
   }
-  remove_cycle();
+//  remove_cycle();
 }

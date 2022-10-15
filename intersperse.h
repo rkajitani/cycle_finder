@@ -15,4 +15,5 @@ class Intersperse:public Cycle{
   void intersperse_exe(void);
   void extract_intersperse_kmer(void);
   int path_find_parent(void);
+  int map_read_intersperse(void);
 };

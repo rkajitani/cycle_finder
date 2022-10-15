@@ -186,8 +186,8 @@ vector<string> option_multi_file(int argc,char *argv[],int *num){
 }
 
 void makeblastdb(string reference, string log_file){
-  string root_path = ROOT_PATH;
-  string cmd = root_path + "/makeblastdb -in " + reference + " -dbtype nucl -hash_index >> " + log_file;
+  string cmd = "makeblastdb -in " + reference + " -dbtype nucl -hash_index >> " + log_file;
+  cerr << "CMD: " << cmd << endl;
   system(cmd.c_str());
 }
 

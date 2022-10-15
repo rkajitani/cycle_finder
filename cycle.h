@@ -2,6 +2,9 @@
 //#include "blastn2fa.h"
 //#include "intersperse.h"
 
+#ifndef CYCLE_H
+#define CYCLE_H
+
 class Cycle{
  public:
   Cycle();
@@ -33,3 +36,5 @@ class Cycle{
   void remove_cycle(void);
   int blastn2fa(void);
 };
+
+#endif

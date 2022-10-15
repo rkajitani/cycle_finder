@@ -141,15 +141,6 @@ int Intersperse::path_find_parent(){
   string line,file_kmer;
 
   int number = 0;
-  /*
-  if(file_exist(this->o + "_blst.blastn") != 0){ //_blst.blastnのファイルがあれば
-    system(("perl /data/yoshiki/program/develop/remove_kmer.pl " + this->o + "_blst.blastn " + file_kmer + " > " + file_kmer + "_no_cycle").c_str()); //hoge
-  } else {
-    system(("cp " + file_kmer + " " + file_kmer + "_no_cycle").c_str());
-  }
-  */
-  //  string file_kmer_i = this->fa + "_no_cycle";
-  //  string file_kmer_i = this->kmer_no_cycle;
   string file_kmer_i = this->kmer_for_path_find;
   string output = this->o;
   int data_type = this->d;

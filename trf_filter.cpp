@@ -6,9 +6,9 @@ void Cycle::trf_filter(){
   string file_out_tandem = this->trf_out_tandem;
   char command_trf[16384];
   int trf_pr[7] = {2,7,7,80,10,50,500};  
-  string root_path = ROOT_PATH;
   if(file_exist(output) != 0){
-    snprintf(command_trf,sizeof(command_trf),"%s %d %d %d %d %d %d %d %s",(root_path + "/trf "+output).c_str() ,trf_pr[0],trf_pr[1],trf_pr[2],trf_pr[3],trf_pr[4],trf_pr[5],trf_pr[6],("-h -ngs |grep '@'|awk \'{print substr($1,2);}' > " + output+"_tmp_trf").c_str());
+    snprintf(command_trf,sizeof(command_trf),"%s %d %d %d %d %d %d %d %s",("trf "+output).c_str() ,trf_pr[0],trf_pr[1],trf_pr[2],trf_pr[3],trf_pr[4],trf_pr[5],trf_pr[6],("-h -ngs |grep '@'|awk \'{print substr($1,2);}' > " + output+"_tmp_trf").c_str());
+	cerr << "CMD: " <<  command_trf << endl;
     system(command_trf);
     FILE *fp1,*fp2;
     ifstream file_tmp,file0;

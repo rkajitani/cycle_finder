@@ -163,8 +163,7 @@ void Cluster::make_output_file(void){
   this->final_output_fa = this->o + ".fa";
   this->final_output_element = this->o + ".element";
 
-  string root_path = ROOT_PATH;
-  this->cmd_blast_self = root_path + "/blastn -db " + this->represent_fa + " -query " + this->represent_fa + " -outfmt 6 -out " + this->blast_self 
+  this->cmd_blast_self = "blastn -db " + this->represent_fa + " -query " + this->represent_fa + " -outfmt 6 -out " + this->blast_self 
     + " -task blastn-short -dust no -num_threads " + to_string(static_cast<long long>(this->t));
   this->len_thr = "0.6";
   this->ide_thr = "80";
@@ -188,15 +187,19 @@ void Cluster::copy_estimation(){
 void Cluster::cluster_blast(){
   system(("grep '*' -A1 " + this->o + "_blst " +  "|grep -v '-' > " + represent_fa).c_str());
   makeblastdb(represent_fa, this->o + ".log");
+  cerr << "CMD: " << cmd_blast_self << endl;
   system(cmd_blast_self.c_str());
   system(("rm " + this->o + "_blst_tmp.n*").c_str());
+  cerr << "CMD: " << filter_blast_self << endl;
   system(filter_blast_self.c_str());
   file_write(this->o + ".log", filter_blast_self);
   //check_file_size
   if(file_exist(this->blst_self) == 0){
     cout << "no family clustering" << endl;
+    cerr << "CMD: " << inherit_tsv << endl;
     system(inherit_tsv.c_str());
     file_write(this->o + ".log", inherit_tsv);
+    cerr << "CMD: " << inherit_fa << endl;
     system(inherit_fa.c_str());
     file_write(this->o + ".log", inherit_fa);
   } else {
