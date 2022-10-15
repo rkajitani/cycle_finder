@@ -11,11 +11,11 @@ namespace std{
     {
       size_t value=0;
       for(int i = 0; i < K_MER*2; ++i){
-	if(x[i] == 1){
-	  value = ((value << 1) | 1);
-	} else {
-	  value = value << 1;
-	}
+  if(x[i] == 1){
+    value = ((value << 1) | 1);
+  } else {
+    value = value << 1;
+  }
       }
       return value;
     }
@@ -140,10 +140,8 @@ void Intersperse::extract_intersperse_kmer(void){
   string open_file2 = this->kmer_id_file;
   fp1 = fopen(open_file1.c_str(),"r");
   fp2 = fopen(open_file2.c_str(),"r");
-  //  this->kmer_no_cycle = this->kmer_id_file + "_no_cycle";
   this->kmer_for_path_find = this->kmer_id_file + "_no_cycle";
   this->fa = this->kmer_for_path_find;
-  //  string output = this->kmer_no_cycle;
   string output = this->kmer_for_path_find;
   fp_out = fopen(output.c_str(),"w");
   if(fp1 == NULL || fp2 == NULL || fp_out == NULL){
@@ -163,14 +161,14 @@ void Intersperse::extract_intersperse_kmer(void){
   vector<string> a;
   unordered_set<string> st;
   if(fp1 != NULL){
-  //read kmer alignment file
-  while((fgets(str,sizeof(str),fp1)) != NULL){
-    str[strlen(str)-1] = '\0';
-    line = str;
-    a = split(line,'\t');
-    st.insert(a[1]);
-  }
-  fclose(fp1);
+    //read kmer alignment file
+    while((fgets(str,sizeof(str),fp1)) != NULL){
+      str[strlen(str)-1] = '\0';
+      line = str;
+      a = split(line,'\t');
+      st.insert(a[1]);
+    }
+    fclose(fp1);
   }
   //read kmer_id fasta file
   unordered_map<string,string> mp;
@@ -182,7 +180,7 @@ void Intersperse::extract_intersperse_kmer(void){
       kmer_id = line.substr(1);
     } else {
       if(st.find(kmer_id) == st.end()){
-	mp.insert(make_pair(kmer_id, line));
+        mp.insert(make_pair(kmer_id, line));
       }
     }
   }
@@ -191,7 +189,7 @@ void Intersperse::extract_intersperse_kmer(void){
   //output
   for(auto it = mp.begin(); it != mp.end(); ++it){
     fprintf(fp_out, "%s%s\n%s\n",
-	    ">", it->first.c_str(), it->second.c_str());
+        ">", it->first.c_str(), it->second.c_str());
   }
   fclose(fp_out);
   return;
@@ -215,7 +213,7 @@ void Intersperse::intersperse_exe(){
     } else {
       trf_filter();
       if(map_read_intersperse() == -1){
-		throw "all interspersed repeats were filtered";
+        throw "all interspersed repeats were filtered";
       }
       repeat_num();
       intersperse_exist = true;

@@ -263,9 +263,8 @@ void Cluster::cdhit(string fasta_file, string file_out, double align_cov){
   int accurate = 1;
   int global = 0;
   int memory_lim = 0;
-  string root_path = ROOT_PATH;
 
-  string cmd = root_path + "/cd-hit-est -i " + fasta_file  //クラスタリングする配列
+  string cmd = "cd-hit-est -i " + fasta_file  //クラスタリングする配列
     + " -n " + to_string(static_cast<long long>(word_length))  //word_length default:10
     + " -c " + to_string(static_cast<long double>(CDHIT_IDENTITY_THR))  //sequence identity
     + " -aL " + to_string(static_cast<long double>(align_cov))  //alignment coverage for the longer sequence
@@ -275,7 +274,7 @@ void Cluster::cdhit(string fasta_file, string file_out, double align_cov){
     + " -G " + to_string(static_cast<long long>(global))  //use global identity
     + " -M " + to_string(static_cast<long long>(memory_lim)) //memory limit
     + " >> " + this->o + ".log";
-  system(("echo " + cmd).c_str());
+  cerr << "CMD: " << cmd << endl;
   system(cmd.c_str());
 }
 
