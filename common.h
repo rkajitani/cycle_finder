@@ -25,7 +25,7 @@ using namespace std;
 #define PROGRAM_NAME "cycle_finder"
 #define VERSION "1.0.0"
 #define K_MER 17
-#define ROOT_PATH "/scratch/kajitani/cf/cycle_finder"
+#define ROOT_PATH "/data1/kajitani/misc/cycle_finder_v1.0/cycle_finder"
 #define CDHIT_IDENTITY_THR 0.8  //cd-hitで用いられるidentity
 #define CDHIT_COVERAGE_THR_TANDEM 0.7  //全長に対してアライメント長が超えるべき割合(tandemでつないでいるとき)
 #define CDHIT_COVERAGE_THR_NOT_TANDEM 0.8  //(tandemでつないでないとき)
