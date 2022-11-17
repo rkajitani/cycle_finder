@@ -8,7 +8,7 @@
 Cluster::Cluster(){
   this->o = "out";
   this->t = 1;
-  this->mismatch = 3;
+  this->mismatch = 0;
   this->r_t = 1;
   this->d = 0;  
 

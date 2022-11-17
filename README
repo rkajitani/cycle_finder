@@ -214,7 +214,7 @@ cycle_finder cluster [OPTIONS]
 
     -p2 INT  : k-mer peak (compare mode corresponds to FILE2)
 
-    -m  INT  : threshold mismatch of kmer alignment for copy estimation (default 3)
+    -m  INT  : threshold mismatch of kmer alignment for copy estimation (default 0)
 
 
     OUTPUT FILES
@@ -350,7 +350,7 @@ cycle_finder all [OPTIONS]
 
     -rc FLOAT : Down sampling coverage (default 0.5)
 
-    -m  INT   : threshold mismatch of kmer alignment for copy estimation (default 3)
+    -m  INT   : threshold mismatch of kmer alignment for copy estimation (default 0)
 
     OUTPUT FILES
 

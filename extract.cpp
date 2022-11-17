@@ -3,8 +3,8 @@
 
 //constructor
 Extract::Extract(){
-  this->c1 = 10;
-  this->c1_string = "10";
+  this->c1 = 100;
+  this->c1_string = "100";
   this->c2 = 10;
   this->t = 1;
   this->k = K_MER;

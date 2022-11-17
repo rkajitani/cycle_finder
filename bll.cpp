@@ -2,13 +2,13 @@
 
 //constructor
 All::All(){
-  this->c1 = 10;
-  this->c1_string = "10";
+  this->c1 = 100;
+  this->c1_string = "100";
   this->c2 = 10;
   this->t = 1;
   this->o = "out";
   this->d = 1;
-  this->mismatch = 3;
+  this->mismatch = 0;
 
   this->max_l = 1000;
   this->max_n = 10000;
