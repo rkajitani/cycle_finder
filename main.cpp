@@ -66,8 +66,15 @@ int main(int argc, char **argv){
       }
       intersperse.intersperse_exe();
     }
+
+    //just print help message
+    if(argc < 2 || ss == "-h" ||  ss == "-help" || ss == "--help"){
+      print_usage();
+      return 0;
+    }
+
     //when input other commands
-    if((i == 1 && ss != "extract" && ss != "cycle" && ss != "cluster" && ss != "all" && ss != "intersperse") || argc < 2){
+    if((i == 1 && ss != "extract" && ss != "cycle" && ss != "cluster" && ss != "all" && ss != "intersperse")){
       print_usage();
       return -1;
     }
