@@ -18,6 +18,32 @@ cycle_finder is a tool for detecting tandem repeat and interspersed repeat from 
 5. Clustering and copy estimating from detected interspersed repeats.
 
 
+## INSTALATION
+### Using Bioconda (Linux)
+```bash
+conda install -c bioconda cycle_finder
+```
+### From source
+```bash
+tar zxfv cycle_finder_<version>.tar.gz
+cd cycle_finder_<version>
+make
+cp cycle_finder <installation_path>
+```
+
+
+## SYNOPSIS
+### single mode
+```bash
+cycle_finder all -f <SHORT_READS>.fastq
+```
+
+### compare mode
+```bash
+cycle_finder all -f1 <SHORT_READS1.fastq> -f2 <SHORT_READS2.fastq>
+```
+
+
 ## DEPENDENCY
 - GCC  
 
@@ -45,29 +71,6 @@ for metagenomic sequence analysis,” Brief. Bioinform., vol. 13, no. 6, pp
 656–668, 2012.
 
 
-## INSTALATION
-
-### Command:
-```bash
-tar zxfv cycle_finder_<version>.tar.gz
-cd cycle_finder_<version>
-make
-cp cycle_finder <installation_path>
-```
-
-
-## SYNOPSIS
-### single mode
-```bash
-cycle_finder all -f <SHORT_READS>.fastq
-```
-
-### compare mode
-```bash
-cycle_finder all -f1 <SHORT_READS1.fastq> -f2 <SHORT_READS2.fastq>
-```
-
-
 ## USAGE
 
 ### COMMON OPTIONS
@@ -76,8 +79,6 @@ cycle_finder all -f1 <SHORT_READS1.fastq> -f2 <SHORT_READS2.fastq>
 
 -o STR    : Prefix of output files (default out)
 ```
-
-
 
 
 ### cycle_finder extract [OPTIONS]
