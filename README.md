@@ -21,7 +21,7 @@ cycle_finder is a tool for detecting tandem repeat and interspersed repeat from 
 ## INSTALATION
 ### Using Bioconda (Linux)
 ```bash
-conda install -c bioconda cycle_finder
+conda install -c bioconda -c conda-forge cycle_finder
 ```
 ### From source
 ```bash
