@@ -44,6 +44,30 @@ cycle_finder all -f1 <SHORT_READS1.fastq> -f2 <SHORT_READS2.fastq>
 ```
 
 
+## TEST
+```bash
+# Get the test dataset, which includes simulated reads from repeats-inserted E. coli genomes.  
+wget https://github.com/rkajitani/cycle_finder/releases/download/v1.0.0/test_data.tar.gz
+tar xzfv test_data.tar.gz
+
+# Test for tandem repeats.
+# The reads, genome, tandem repeat unit (253 bp; mutation rate, 2%), and correct result are
+# reads.fq, genome.fa, rep_unit.fa, and result/*, respectively.
+cd test_data/tandem/
+bash cmd.sh
+# Output: out_T.fa out_T.tsv
+
+cd ../..
+
+# Test for interspersed repeats.
+# The reads, genome, interspersed repeat unit (253 bp; mutation rate, 2%), and correct result are
+# reads.fq, genome.fa, rep_unit.fa, and result/*, respectively.
+cd test_data/interspersed/
+bash cmd.sh
+# Output: out_I.fa out_I.tsv
+```
+
+
 ## DEPENDENCY
 - GCC  
 
